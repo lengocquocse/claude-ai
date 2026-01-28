@@ -851,6 +851,23 @@ h1, h2, h3, h4 {
     color: var(--color-beige);
 }
 
+.footer-love-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--color-beige-light);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-love-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
 .footer-hashtag {
     font-size: 0.9rem;
     color: var(--color-accent);
