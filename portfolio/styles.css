@@ -1180,8 +1180,11 @@ body {
     }
 
     .experience-badge {
-        right: 10px;
-        bottom: -10px;
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 1.5rem;
+        justify-content: center;
         padding: 1rem;
     }
 
@@ -1195,6 +1198,13 @@ body {
 
     .about-image {
         max-width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-frame {
+        width: 100%;
     }
 
     .about-highlights {
@@ -1221,7 +1231,7 @@ body {
     }
 
     .about-image {
-        max-width: 220px;
+        max-width: 200px;
     }
 
     .placeholder-avatar {
@@ -1229,7 +1239,6 @@ body {
     }
 
     .experience-badge {
-        right: -10px;
         padding: 0.75rem;
     }
 
