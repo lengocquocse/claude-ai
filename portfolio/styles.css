@@ -556,6 +556,7 @@ body {
 .section {
     padding: 6rem 0;
     position: relative;
+    overflow-x: hidden;
 }
 
 .section-dark {
@@ -611,6 +612,7 @@ body {
 
 .about-image {
     position: relative;
+    overflow: visible;
 }
 
 .image-frame {
@@ -1178,8 +1180,25 @@ body {
     }
 
     .experience-badge {
-        right: 0;
+        right: 10px;
         bottom: -10px;
+        padding: 1rem;
+    }
+
+    .exp-number {
+        font-size: 2rem;
+    }
+
+    .placeholder-avatar {
+        font-size: 4rem;
+    }
+
+    .about-image {
+        max-width: 280px;
+    }
+
+    .about-highlights {
+        justify-content: center;
     }
 }
 
@@ -1199,5 +1218,31 @@ body {
 
     .contact-form {
         padding: 1.5rem;
+    }
+
+    .about-image {
+        max-width: 220px;
+    }
+
+    .placeholder-avatar {
+        font-size: 3rem;
+    }
+
+    .experience-badge {
+        right: -10px;
+        padding: 0.75rem;
+    }
+
+    .exp-number {
+        font-size: 1.5rem;
+    }
+
+    .exp-text {
+        font-size: 0.75rem;
+    }
+
+    .highlight {
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
 }
