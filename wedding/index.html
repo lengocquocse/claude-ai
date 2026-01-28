@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah & James | Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">S & J</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">We're Getting Married</p>
+            <h1 class="hero-title">
+                <span class="name">Sarah</span>
+                <span class="ampersand">&</span>
+                <span class="name">James</span>
+            </h1>
+            <div class="hero-date">
+                <span class="date-line"></span>
+                <span class="date">June 15, 2026</span>
+                <span class="date-line"></span>
+            </div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">000</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            <a href="#rsvp" class="btn btn-primary">RSVP Now</a>
+        </div>
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <section id="story" class="section story-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">How It All Began</span>
+                <h2 class="section-title">Our Story</h2>
+            </div>
+            <div class="story-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h3>First Meeting</h3>
+                        <p>We met at a friend's dinner party, not knowing that evening would change our lives forever. A simple conversation over coffee turned into hours of laughter and connection.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h3>First Date</h3>
+                        <p>Our first official date was a walk through the botanical gardens, followed by dinner at a cozy Italian restaurant. We talked until they closed the doors.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3>Moving In Together</h3>
+                        <p>After two years of adventures, late-night conversations, and growing together, we decided to share our lives under one roof.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h3>The Proposal</h3>
+                        <p>On a sunset hike at our favorite trail, James got down on one knee. Through happy tears, Sarah said yes, and our forever began.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="container">
+            <blockquote>
+                <p>"Whatever our souls are made of, his and mine are the same."</p>
+                <cite>- Emily Bront&euml;</cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <section id="events" class="section events-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Join Us</span>
+                <h2 class="section-title">Wedding Events</h2>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>The Ceremony</h3>
+                    <div class="event-details">
+                        <p class="event-time">3:00 PM</p>
+                        <p class="event-venue">St. Mary's Chapel</p>
+                        <p class="event-address">123 Garden Lane<br>Napa Valley, CA 94558</p>
+                    </div>
+                    <a href="#" class="event-map-link">View Map</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+                            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                    </div>
+                    <h3>Cocktail Hour</h3>
+                    <div class="event-details">
+                        <p class="event-time">4:30 PM</p>
+                        <p class="event-venue">Vineyard Terrace</p>
+                        <p class="event-address">456 Wine Country Road<br>Napa Valley, CA 94558</p>
+                    </div>
+                    <a href="#" class="event-map-link">View Map</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Reception & Dinner</h3>
+                    <div class="event-details">
+                        <p class="event-time">6:00 PM</p>
+                        <p class="event-venue">Grand Ballroom</p>
+                        <p class="event-address">456 Wine Country Road<br>Napa Valley, CA 94558</p>
+                    </div>
+                    <a href="#" class="event-map-link">View Map</a>
+                </div>
+            </div>
+            <div class="dress-code">
+                <h4>Dress Code</h4>
+                <p>Formal / Black Tie Optional</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Memories</span>
+                <h2 class="section-title">Our Gallery</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <div class="gallery-placeholder">
+                        <span>Photo 1</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <span>Photo 2</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <span>Photo 3</span>
+                    </div>
+                </div>
+                <div class="gallery-item tall">
+                    <div class="gallery-placeholder">
+                        <span>Photo 4</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <span>Photo 5</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <span>Photo 6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="section rsvp-section">
+        <div class="container">
+            <div class="rsvp-wrapper">
+                <div class="rsvp-info">
+                    <span class="section-subtitle">Be Our Guest</span>
+                    <h2 class="section-title">RSVP</h2>
+                    <p>We would be honored to have you join us on our special day. Please respond by May 15, 2026.</p>
+                    <div class="rsvp-contact">
+                        <p><strong>Questions?</strong></p>
+                        <p>Contact us at <a href="mailto:wedding@sarahandjames.com">wedding@sarahandjames.com</a></p>
+                    </div>
+                </div>
+                <form class="rsvp-form" id="rsvpForm">
+                    <div class="form-group">
+                        <input type="text" id="guestName" name="guestName" required placeholder=" ">
+                        <label for="guestName">Full Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="guestEmail" name="guestEmail" required placeholder=" ">
+                        <label for="guestEmail">Email Address</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="attendance" name="attendance" required>
+                            <option value="" disabled selected>Will you attend?</option>
+                            <option value="yes">Joyfully Accept</option>
+                            <option value="no">Regretfully Decline</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="guests" name="guests">
+                            <option value="" disabled selected>Number of Guests</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="dietary" name="dietary" rows="3" placeholder=" "></textarea>
+                        <label for="dietary">Dietary Restrictions (Optional)</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="3" placeholder=" "></textarea>
+                        <label for="message">Leave a Message for the Couple</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send RSVP</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="accommodations-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Where to Stay</span>
+                <h2 class="section-title">Accommodations</h2>
+            </div>
+            <div class="accommodations-grid">
+                <div class="accommodation-card">
+                    <h3>Vineyard Inn</h3>
+                    <p class="accommodation-distance">5 min from venue</p>
+                    <p>Mention "Sarah & James Wedding" for a special rate.</p>
+                    <a href="#" class="btn btn-outline">Book Now</a>
+                </div>
+                <div class="accommodation-card">
+                    <h3>Napa Grand Hotel</h3>
+                    <p class="accommodation-distance">10 min from venue</p>
+                    <p>Complimentary shuttle service to the venue.</p>
+                    <a href="#" class="btn btn-outline">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="registry-section">
+        <div class="container">
+            <div class="registry-content">
+                <span class="section-subtitle">Gifts</span>
+                <h2 class="section-title">Wedding Registry</h2>
+                <p>Your presence is the greatest gift of all. However, if you wish to honor us with a gift, we've registered at the following:</p>
+                <div class="registry-links">
+                    <a href="#" class="registry-link">Amazon</a>
+                    <a href="#" class="registry-link">Crate & Barrel</a>
+                    <a href="#" class="registry-link">Honeymoon Fund</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-names">Sarah & James</p>
+                <p class="footer-date">June 15, 2026</p>
+                <p class="footer-hashtag">#SarahAndJamesForever</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
