@@ -5,6 +5,7 @@ DOMAIN="portfolio.dante-le.io.vn"
 EMAIL="dante@dante-le.io.vn"
 SITE_DIR="/var/www/portfolio"
 CERTBOT_WEBROOT="/var/www/certbot"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "=== Nginx + SSL Setup for $DOMAIN ==="
 
@@ -18,20 +19,34 @@ fi
 # Copy site files
 echo "Copying site files to $SITE_DIR..."
 sudo mkdir -p "$SITE_DIR"
-sudo cp "$(dirname "$0")/index.html" "$SITE_DIR/"
-sudo cp "$(dirname "$0")/styles.css" "$SITE_DIR/"
-sudo cp "$(dirname "$0")/script.js" "$SITE_DIR/"
-
-# Copy nginx config
-echo "Setting up nginx config..."
-sudo cp "$(dirname "$0")/nginx/default.conf" /etc/nginx/sites-available/portfolio
-sudo ln -sf /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/portfolio
+sudo cp "$SCRIPT_DIR/index.html" "$SITE_DIR/"
+sudo cp "$SCRIPT_DIR/styles.css" "$SITE_DIR/"
+sudo cp "$SCRIPT_DIR/script.js" "$SITE_DIR/"
 
 # Create certbot webroot
 sudo mkdir -p "$CERTBOT_WEBROOT"
 
-# Test nginx config and reload
-echo "Reloading nginx..."
+# Install temporary HTTP-only config (no SSL references)
+echo "Setting up temporary HTTP-only config..."
+sudo tee /etc/nginx/sites-available/portfolio > /dev/null <<'EOF'
+server {
+    listen 80;
+    listen [::]:80;
+    server_name portfolio.dante-le.io.vn;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        root /var/www/portfolio;
+        index index.html;
+    }
+}
+EOF
+sudo ln -sf /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/portfolio
+
+echo "Reloading nginx (HTTP only for certificate request)..."
 sudo nginx -t
 sudo systemctl reload nginx
 
@@ -45,7 +60,10 @@ sudo certbot certonly \
     --no-eff-email \
     -d "$DOMAIN"
 
-# Reload nginx with SSL enabled
+# Now install the full config with SSL
+echo "Installing full config with SSL..."
+sudo cp "$SCRIPT_DIR/nginx/default.conf" /etc/nginx/sites-available/portfolio
+
 echo "Reloading nginx with SSL..."
 sudo nginx -t
 sudo systemctl reload nginx
