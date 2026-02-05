@@ -5,17 +5,10 @@ const navLinks = document.querySelector('.nav-links');
 const trackingForm = document.querySelector('.tracking-form');
 const trackingResult = document.getElementById('trackingResult');
 const contactForm = document.querySelector('.contact-form');
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
 
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Mobile menu toggle
+// Mobile Menu Toggle
 mobileMenuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     mobileMenuBtn.classList.toggle('active');
@@ -35,7 +28,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const headerOffset = 80;
+            const headerOffset = 100;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -47,67 +40,54 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Active nav link on scroll
-const sections = document.querySelectorAll('section[id]');
-
-window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
-
-        if (navLink && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            navLink.classList.add('active');
-        }
-    });
-});
-
 // Tracking form submission
 trackingForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const trackingNumber = trackingForm.querySelector('input').value.trim();
 
     if (trackingNumber) {
-        // Simulate tracking lookup
         trackingResult.classList.add('active');
         trackingResult.innerHTML = `
-            <h4>Tracking: ${trackingNumber}</h4>
-            <p><strong>Status:</strong> In Transit</p>
-            <p><strong>Location:</strong> Distribution Center - Ho Chi Minh City</p>
-            <p><strong>Estimated Delivery:</strong> ${getEstimatedDelivery()}</p>
-            <p><strong>Last Update:</strong> ${new Date().toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })}</p>
+            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 0.5rem;">Tracking: ${trackingNumber}</h4>
+                    <p style="color: #6b7280; margin-bottom: 0.25rem;"><strong>Status:</strong> Out for Delivery</p>
+                    <p style="color: #6b7280; margin-bottom: 0.25rem;"><strong>Location:</strong> Ho Chi Minh City Distribution Center</p>
+                    <p style="color: #6b7280;"><strong>Estimated Delivery:</strong> Today by 6:00 PM</p>
+                </div>
+            </div>
         `;
     }
 });
 
-function getEstimatedDelivery() {
-    const date = new Date();
-    date.setDate(date.getDate() + 3);
-    return date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+// Tab switching for solutions
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+
+        // Update active button
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Update active content
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === tabId) {
+                content.classList.add('active');
+            }
+        });
     });
-}
+});
 
 // Contact form submission
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const formData = new FormData(contactForm);
 
-    // Simulate form submission
     const btn = contactForm.querySelector('button');
     const originalText = btn.textContent;
     btn.textContent = 'Sending...';
@@ -115,7 +95,7 @@ contactForm.addEventListener('submit', (e) => {
 
     setTimeout(() => {
         btn.textContent = 'Message Sent!';
-        btn.style.background = '#28a745';
+        btn.style.background = '#22c55e';
         contactForm.reset();
 
         setTimeout(() => {
@@ -138,10 +118,10 @@ const animateCounter = (el) => {
     const updateCounter = () => {
         current += step;
         if (current < target) {
-            el.textContent = Math.floor(current).toLocaleString();
+            el.textContent = Math.floor(current);
             requestAnimationFrame(updateCounter);
         } else {
-            el.textContent = target.toLocaleString();
+            el.textContent = target;
         }
     };
 
@@ -157,39 +137,28 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-
             // Trigger counter animation for stats
-            if (entry.target.classList.contains('stat')) {
+            if (entry.target.classList.contains('stat-item')) {
                 const counter = entry.target.querySelector('.stat-number');
                 if (counter && !counter.classList.contains('counted')) {
                     counter.classList.add('counted');
                     animateCounter(counter);
                 }
             }
+
+            // Add visible class for animations
+            entry.target.classList.add('visible');
         }
     });
 }, observerOptions);
 
-// Observe elements for animation
-document.querySelectorAll('.service-card, .contact-item, .stat').forEach(el => {
+// Observe stat items
+document.querySelectorAll('.stat-item').forEach(el => {
     observer.observe(el);
 });
 
-// Staggered animation for service cards
-const serviceCards = document.querySelectorAll('.service-card');
-serviceCards.forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.1}s`;
-});
-
-// Parallax effect for hero shapes
-document.addEventListener('mousemove', (e) => {
-    const shapes = document.querySelectorAll('.shape');
-    const x = (window.innerWidth - e.pageX) / 50;
-    const y = (window.innerHeight - e.pageY) / 50;
-
-    shapes.forEach((shape, index) => {
-        const factor = index === 0 ? 1 : -1;
-        shape.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-    });
+// Observe service cards with staggered delay
+document.querySelectorAll('.service-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+    observer.observe(card);
 });
